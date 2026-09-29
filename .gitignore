@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+backend/health.db
+backend/model/health_model.pkl
+ml/dataset.csv
+ml/test_split.csv
+.vscode/
+.idea/

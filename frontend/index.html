@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily Health &amp; Wellness Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <h1>Daily Health &amp; Wellness Monitor</h1>
+    <p class="subtitle">Track your daily lifestyle and wellness trends.</p>
+  </header>
+
+  <main class="layout">
+
+    <!-- INPUT -->
+    <section class="card form-card" aria-labelledby="form-heading">
+      <h2 id="form-heading">Today's entry</h2>
+      <form id="wellness-form" novalidate>
+
+        <fieldset>
+          <legend>Rest &amp; activity</legend>
+          <div class="field-grid">
+            <label>Sleep (hours)
+              <input type="number" id="sleep_hours" name="sleep_hours" min="0" max="24" step="0.1" value="7" required />
+            </label>
+            <label>Steps
+              <input type="number" id="steps" name="steps" min="0" max="100000" step="1" value="7000" required />
+            </label>
+            <label>Exercise (minutes)
+              <input type="number" id="exercise_minutes" name="exercise_minutes" min="0" max="600" step="1" value="30" required />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Body &amp; vitals</legend>
+          <div class="field-grid">
+            <label>Age
+              <input type="number" id="age" name="age" min="10" max="100" step="1" value="25" required />
+            </label>
+            <label>Weight (kg)
+              <input type="number" id="weight" name="weight" min="20" max="300" step="0.1" value="68" required />
+            </label>
+            <label>Resting heart rate (bpm)
+              <input type="number" id="heart_rate" name="heart_rate" min="30" max="220" step="1" value="72" required />
+            </label>
+            <label>Water intake (L)
+              <input type="number" id="water_intake" name="water_intake" min="0" max="15" step="0.1" value="2" required />
+            </label>
+            <label>Calories consumed
+              <input type="number" id="calories" name="calories" min="0" max="10000" step="10" value="2200" required />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Mind &amp; screen</legend>
+          <div class="field-grid">
+            <label>Stress level (1-10)
+              <input type="number" id="stress_level" name="stress_level" min="1" max="10" step="1" value="5" required />
+            </label>
+            <label>Mood (1-10)
+              <input type="number" id="mood" name="mood" min="1" max="10" step="1" value="6" required />
+            </label>
+            <label>Screen time (hours)
+              <input type="number" id="screen_time" name="screen_time" min="0" max="24" step="0.1" value="5" required />
+            </label>
+          </div>
+        </fieldset>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+
+        <button type="submit" id="submit-btn">Analyze My Day</button>
+      </form>
+    </section>
+
+    <!-- RESULT + CHART -->
+    <div class="right-column">
+
+      <section class="card result-card" id="result-card" aria-live="polite">
+        <h2>Today's wellness</h2>
+        <div id="result-empty" class="result-empty">
+          <p>Fill in today's numbers and select <strong>Analyze My Day</strong> to see your result.</p>
+        </div>
+        <div id="result-content" class="result-content" hidden>
+          <span class="result-status" id="result-status">Good</span>
+          <div class="score-row">
+            <span class="score-value" id="result-score">0</span>
+            <span class="score-max">/ 100</span>
+          </div>
+          <p class="result-message" id="result-message"></p>
+        </div>
+      </section>
+
+      <section class="card chart-card" aria-labelledby="chart-heading">
+        <h2 id="chart-heading">Wellness over time</h2>
+        <div class="chart-wrap">
+          <canvas id="history-chart" height="220"></canvas>
+        </div>
+        <p id="chart-empty" class="chart-empty">No entries yet. Your trend will appear here after your first submission.</p>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="disclaimer">
+    <p>This tool reflects lifestyle inputs only. It does not diagnose any medical condition and is not a substitute for professional medical advice.</p>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
